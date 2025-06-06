@@ -23,17 +23,17 @@ export class CartApp implements OnInit{
   // Items que pasamos al sub-componente cart. (Productos del carrito)
   items: CartItem[] = [];
 
-  //total: number = 0;
+  total: number = 0;
 
   // Variable para mostrar/ocultar el carrito
-  showCart: boolean = false;
+  //showCart: boolean = false;
 
   constructor(private service: ProductService) {}
 
   ngOnInit(): void {
     this.products = this.service.findAll();
     this.items = JSON.parse(sessionStorage.getItem("cart")!) || [];
-    //this.calculateTotal();
+    this.calculateTotal();
   }
 
   // Recibimos el producto del componente hijo para añadir al carrito
@@ -60,8 +60,8 @@ export class CartApp implements OnInit{
       this.items = [... this.items, { product: { ...product}, quantity: 1}];
     }
 
-    //this.calculateTotal();
-    //this.saveSession();
+    this.calculateTotal();
+    this.saveSession();
   }
 
   onDeleteCart(id: number) {
@@ -76,21 +76,21 @@ export class CartApp implements OnInit{
     }
 
     // Calculamos el total del carrito
-    //this.calculateTotal();
-    //this.saveSession();
+    this.calculateTotal();
+    this.saveSession();
   }
 
-  // calculateTotal(): void {
-  //   this.total = this.items.reduce( (total, item) => total + (item.product.price * item.quantity), 0);
-  // }
+  calculateTotal(): void {
+    this.total = this.items.reduce( (total, item) => total + (item.product.price * item.quantity), 0);
+  }
 
-  // saveSession(): void {
-  //   sessionStorage.setItem("cart", JSON.stringify(this.items));
-  // }
+  saveSession(): void {
+    sessionStorage.setItem("cart", JSON.stringify(this.items));
+  }
 
   // Método para mostrar/ocultar el carrito
-  openCart(): void {
-    this.showCart = !this.showCart;
-  }
+  // openCart(): void {
+  //   this.showCart = !this.showCart;
+  // }
 
 }
