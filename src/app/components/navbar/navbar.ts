@@ -11,5 +11,7 @@ import { RouterModule } from '@angular/router';
 export class Navbar {
 
   @Input() items!: CartItem[];
+
+  @Input() total!: number;
  
 }
