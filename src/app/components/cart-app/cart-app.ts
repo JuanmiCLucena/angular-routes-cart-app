@@ -5,13 +5,15 @@ import { Catalog } from "../catalog/catalog";
 import { Cart } from '../cart/cart';
 import { CartItem } from '../../models/cart-item';
 import { Navbar } from "../navbar/navbar";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'cart-app',
   imports: [
     Catalog,
     Cart,
-    Navbar
+    Navbar,
+    RouterOutlet
 ],
   templateUrl: './cart-app.html'
 })

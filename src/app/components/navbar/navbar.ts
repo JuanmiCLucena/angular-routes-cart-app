@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CartItem } from '../../models/cart-item';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'navbar',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './navbar.html'
 })
 

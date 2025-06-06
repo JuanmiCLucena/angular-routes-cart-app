@@ -6,5 +6,11 @@
     <catalog 
     [products]="products" 
     (productEventEmitter)="onAddCart($event)"/>
+
+    <!-- 
+        De esta forma nos va a mostrar todos los componentes enrutados de forma dinámica
+        según la ruta que coloquemos en el navegador
+        -->
+    <router-outlet></router-outlet>
 </div>
 
