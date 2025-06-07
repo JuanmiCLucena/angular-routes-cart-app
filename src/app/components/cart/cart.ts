@@ -1,6 +1,7 @@
 import { Component, EventEmitter } from '@angular/core';
 import { CartItem } from '../../models/cart-item';
 import { Router } from '@angular/router';
+import { SharingDataService } from '../../services/sharing-data';
 
 @Component({
   selector: 'cart',
@@ -14,10 +15,8 @@ export class Cart {
 
   total: number = 0;
   
-  idProductEventEmitter = new EventEmitter();
-
-  // Inyectamos Router
-  constructor(private router: Router) {
+  // Inyectamos Router y el servicio sharingDataService que tiene un getter del EventEmitter idProduct.
+  constructor(private router: Router, private sharingDataService: SharingDataService) {
     // Obtenemos el estado de la navegación actual gracias al componente Router de angular.
     // ? indica que podría ser null
     this.items = this.router.getCurrentNavigation()?.extras.state!['items'];
@@ -25,7 +24,7 @@ export class Cart {
   }
   
   onDeleteCart(id: number) {
-    this.idProductEventEmitter.emit(id);
+    this.sharingDataService.idProductEventEmitter.emit(id);
   }
 
 }

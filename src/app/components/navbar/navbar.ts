@@ -13,5 +13,5 @@ export class Navbar {
   @Input() items!: CartItem[];
 
   @Input() total!: number;
- 
+
 }

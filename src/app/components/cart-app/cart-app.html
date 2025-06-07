@@ -1,12 +1,6 @@
 <navbar [items]="items" [total]="total"></navbar>
 
 <div class="container my-4">
-
-    <h2>Catalogo de productos App!</h2>
-    <catalog 
-    [products]="products" 
-    (productEventEmitter)="onAddCart($event)"/>
-
     <!-- 
         De esta forma nos va a mostrar todos los componentes enrutados de forma dinámica
         según la ruta que coloquemos en el navegador
